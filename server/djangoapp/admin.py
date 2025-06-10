@@ -6,10 +6,11 @@ from .models import CarMake, CarModel
 class CarMakeAdmin(admin.ModelAdmin):
     list_display = ('name', 'description')
 
+
 class CarModelAdmin(admin.ModelAdmin):
     list_display = ('car_make', 'name', 'type', 'year')
 
-    def car_make(self,obj):
+    def car_make(self, obj):
         return f'{obj.CarMake.name}'
     car_make.short_description = 'Brand'
 
