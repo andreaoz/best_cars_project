@@ -51,10 +51,10 @@ const Dealer = () => {
     }
   }
 
-  const senti_icon = (sentiment)=>{
-    let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
-    return icon;
-  }
+  //const senti_icon = (sentiment)=>{
+  //  let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
+  //  return icon;
+  //}
 
   useEffect(() => {
     get_dealer();
@@ -80,7 +80,6 @@ return(
       ):  unreviewed === true? <div>No reviews yet! </div> :
       reviews.map(review => (
         <div className='review_panel'>
-          <img src={senti_icon(review.sentiment)} className="emotion_icon" alt='Sentiment'/>
           <div className='review'>{review.review}</div>
           <div className="reviewer">{review.name} {review.car_make} {review.car_model} {review.car_year}</div>
         </div>
