@@ -1,88 +1,478 @@
-table{
-    margin:5px;
-    padding:10px;
-    border: grey solid 1px;
-    width:100%
-  }
-  
-  td{
-    padding:10px;
-    align-self: center;
-    border:solid grey .5px;
+.dealerspage {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b1b 30%, #8b1538 70%, #dc143c 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .dealerspage::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(220, 20, 60, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 69, 0, 0.08) 0%, transparent 50%),
+                linear-gradient(45deg, transparent 40%, rgba(255, 215, 0, 0.03) 50%, transparent 60%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Contenedor de la tabla */
+        .table-container {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 95%;
+            border: 1px solid rgba(220, 20, 60, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+
+        .page-title {
+            text-align: center;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #dc143c, #ff4500, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Tabla principal */
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            background: transparent;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(220, 20, 60, 0.2);
+        }
+
+        /* Headers de la tabla */
+        .table th {
+            background: linear-gradient(135deg, #2a2a2a, #8b1538);
+            color: #fff;
+            padding: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            border: none;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+
+        .table th:first-child {
+            border-top-left-radius: 8px;
+        }
+
+        .table th:last-child {
+            border-top-right-radius: 8px;
+        }
+
+        /* Filas de datos */
+        .table td {
+            padding: 0.8rem;
+            border-bottom: 1px solid rgba(220, 20, 60, 0.15);
+            background: rgba(26, 26, 26, 0.6);
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        .table tr:hover td {
+            background: rgba(220, 20, 60, 0.08);
+        }
+
+        .table tr:hover {
+            transform: translateY(-1px);
+        }
+
+        /* Efecto zebra mejorado */
+        .table tr:nth-child(even) td {
+            background: rgba(30, 30, 30, 0.6);
+        }
+
+        .table tr:nth-child(even):hover td {
+            background: rgba(220, 20, 60, 0.1);
+        }
+
+        /* Enlaces en la tabla */
+        .table a {
+            color: #dc143c;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .table a:hover {
+            color: #fff;
+            background: rgba(220, 20, 60, 0.8);
+            transform: translateY(-1px);
+        }
+
+        /* Select dropdown mejorado */
+        .table select {
+            background: rgba(40, 40, 40, 0.9);
+            color: #fff;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 6px;
+            padding: 0.5rem 0.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            outline: none;
+            min-width: 100px;
+        }
+
+        .table select:hover {
+            border-color: rgba(220, 20, 60, 0.6);
+        }
+
+        .table select:focus {
+            border-color: #dc143c;
+            box-shadow: 0 0 0 2px rgba(220, 20, 60, 0.2);
+        }
+
+        .table select option {
+            background: #2a2a2a;
+            color: #fff;
+            padding: 0.3rem;
+        }
+
+        .review-col {
+              align-items: center;
+              justify-content: center;
+        }
+
+        /* Icono de review */
+        .review_icon {
+            width: 20px;
+            height: 20px;
+            transition: all 0.2s ease;
+            color: #dc143c;
+            font-size: 24px;
+            padding: 6px; /* espacio interno para que el "cuadro" tenga margen */
+            border-radius: 6px;
+        }
+
+        .review_icon:hover {
+            transform: scale(1.1);
+            color: #ff4500;
+        }
+
+        /* Efectos de carga/animación de entrada */
+        .table tr {
+            animation: slideInRow 0.4s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .table tr:nth-child(1) { animation-delay: 0.05s; }
+        .table tr:nth-child(2) { animation-delay: 0.1s; }
+        .table tr:nth-child(3) { animation-delay: 0.15s; }
+        .table tr:nth-child(4) { animation-delay: 0.2s; }
+        .table tr:nth-child(5) { animation-delay: 0.25s; }
+        .table tr:nth-child(6) { animation-delay: 0.3s; }
+        .table tr:nth-child(7) { animation-delay: 0.35s; }
+
+        @keyframes slideInRow {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .table-container {
+                padding: 1rem;
+                margin: 1rem;
+            }
+            
+            .table {
+                font-size: 0.8rem;
+            }
+            
+            .table th,
+            .table td {
+                padding: 0.6rem 0.4rem;
+            }
+        }
+
+
+        /* Contenedor principal del dealer */
+.dealer-container {
+    margin: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Información del dealer */
+.dealer-info {
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.dealer-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #dc143c, transparent);
+    border-radius: 12px 12px 0 0;
+}
+
+.dealer-name {
+    color: #fff;
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.dealer-name .post-review-link {
+    color: #dc143c;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-left: 1rem;
+    padding: 0.3rem 0.8rem;
+    border: 1px solid rgba(220, 20, 60, 0.3);
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.dealer-name .post-review-link:hover {
+    background: rgba(220, 20, 60, 0.1);
+    border-color: #dc143c;
+}
+
+.dealer-address {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+}
+
+/* Stats bar opcional */
+.stats-bar {
+    display: flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.stat-item i {
+    color: #dc143c;
+}
+
+/* Panel de reviews */
+.reviews_panel {
+    background: rgba(20, 20, 20, 0.85);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid rgba(220, 20, 60, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.reviews-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Loading y no reviews */
+.loading-text, .no-reviews {
+    color: rgba(255, 255, 255, 0.6);
     text-align: center;
-    font-size: large;
-  }
-  
-  .review_panel{
+    padding: 2rem;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.no-reviews {
     display: flex;
     flex-direction: column;
-    border: solid grey;
-    position: relative;
-    height:7cm;
-    width:6cm;
-    overflow-y: scroll;
-    padding:.3cm;
-    padding-top: 0%;
-    border-radius:10px; 
-    box-shadow: 0px 1px 12px rgba(0, 0, 0, 0.5);
-    margin-bottom: .5cm;
-    justify-content: space-between;
-  }
-
-  .postreview{
-    margin:20px;
-    padding:10px;
-    font-size: larger;
-  }
-
-  th{
-    padding:5px;
-    align-self: center;
-    text-align: center;
-    font-size: large;
-    margin-bottom: 1cm;
-    vertical-align: middle;
-    color: black;
-  }
-
-  .reviews_panel {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    column-gap: 1cm;
-    overflow-wrap: normal;
-    margin-top: 1cm;
-    align-items: flex-start;
-  }
-
-  .reviewer {
-    margin: 10px; /* Optional margin for spacing */
-    font-style: italic;
-    color: gray;
-    font-size: small;
+    align-items: center;
+    gap: 1rem;
 }
 
+.no-reviews i {
+    font-size: 3rem;
+    color: rgba(220, 20, 60, 0.3);
+}
+
+/* Review individual */
+.review_panel {
+    background: rgba(26, 26, 26, 0.6);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid rgba(220, 20, 60, 0.4);
+    transition: all 0.2s ease;
+    animation: slideInReview 0.4s ease-out forwards;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.review_panel:nth-child(1) { animation-delay: 0.1s; }
+.review_panel:nth-child(2) { animation-delay: 0.2s; }
+.review_panel:nth-child(3) { animation-delay: 0.3s; }
+.review_panel:nth-child(4) { animation-delay: 0.4s; }
+.review_panel:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInReview {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.review_panel:hover {
+    background: rgba(35, 35, 35, 0.8);
+    border-left-color: #dc143c;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(220, 20, 60, 0.1);
+}
+
+.review_panel:last-child {
+    margin-bottom: 0;
+}
+
+/* Contenido del review */
 .review {
-  margin-top: 1.5cm;
+    color: #fff;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1rem;
 }
 
-.emotion_icon {
-  align-self: center;
-  position:fixed;
-    width:40px;
-    height:40px;
-    background-color:#0C9;
-    color:#FFF;
-    border-radius:50px;
-    text-align:center;
-    box-shadow: 2px 2px 3px #999;  
+.review::before {
+    content: '"';
+    font-size: 2rem;
+    color: rgba(220, 20, 60, 0.3);
+    position: absolute;
+    left: -0.2rem;
+    top: -0.3rem;
 }
 
-.review_icon {
-  width:40px;
+.review::after {
+    content: '"';
+    font-size: 1.2rem;
+    color: rgba(220, 20, 60, 0.3);
+    margin-left: 0.2rem;
 }
 
-.review_icon:hover {
-  transform: scale(1.1);
-  border: solid lightgray;
+/* Info del reviewer */
+.reviewer {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reviewer::before {
+    content: '—';
+    color: #dc143c;
+}
+
+.reviewer .car-info {
+    color: #dc143c;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dealer-container {
+        margin: 10px;
+        padding: 0 10px;
+    }
+
+    .dealer-info {
+        padding: 1.5rem;
+    }
+
+    .dealer-name {
+        font-size: 1.8rem;
+    }
+
+    .dealer-name .post-review-link {
+        display: block;
+        margin: 0.5rem 0 0 0;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+
+    .stats-bar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .review_panel {
+        padding: 1rem;
+    }
+
+    .reviews_panel {
+        padding: 1rem;
+    }
+
+    .review {
+        font-size: 0.95rem;
+        padding-left: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dealer-name {
+        font-size: 1.5rem;
+    }
+    
+    .dealer-address {
+        font-size: 1rem;
+    }
 }

@@ -1,10 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./Dealers.css";
-import "../assets/style.css";
-import positive_icon from "../assets/positive.png"
-import neutral_icon from "../assets/neutral.png"
-import negative_icon from "../assets/negative.png"
 import review_icon from "../assets/reviewbutton.png"
 import Header from '../Header/Header';
 
@@ -68,23 +64,55 @@ const Dealer = () => {
 
 
 return(
-  <div style={{margin:"20px"}}>
-      <Header/>
-      <div style={{marginTop:"10px"}}>
-      <h1 style={{color:"grey"}}>{dealer.full_name}{postReview}</h1>
-      <h4  style={{color:"grey"}}>{dealer['city']},{dealer['address']}, Zip - {dealer['zip']}, {dealer['state']} </h4>
+  
+  <div className='dealerspage'>
+    <Header/>
+  <div className='dealer-container'>
+      <div className='dealer-info'>
+      <h1 className='dealer-name'>{dealer.full_name}{postReview}</h1>
+      <h4  className='dealer-address'>{dealer['city']},{dealer['address']}, Zip - {dealer['zip']}, {dealer['state']} </h4>
       </div>
-      <div class="reviews_panel">
+
+    <div className="stats-bar">
+      <div className="stat-item">
+        <i className="fas fa-map-marker-alt"></i>
+        <span>Prime Location</span>
+      </div>
+      <div className="stat-item">
+        <i className="fas fa-star"></i>
+        <span>{reviews.length} Reviews</span>
+      </div>
+    </div>
+
+    
+      <div className="reviews_panel">
+      <h2 className="reviews-title">
+        <i className="fas fa-comments"></i>
+        Customer Reviews
+      </h2>
+
       {reviews.length === 0 && unreviewed === false ? (
-        <text>Loading Reviews....</text>
-      ):  unreviewed === true? <div>No reviews yet! </div> :
-      reviews.map(review => (
-        <div className='review_panel'>
-          <div className='review'>{review.review}</div>
-          <div className="reviewer">{review.name} {review.car_make} {review.car_model} {review.car_year}</div>
+        <div className="loading-text">Loading Reviews....</div>
+      ):  unreviewed === true? (
+        <div className="no-reviews">
+          <i className="fas fa-comment-slash"></i>
+          <div>No reviews yet!</div>
+          <div style={{fontSize: '0.9rem', marginTop: '0.5rem'}}>
+            Be the first to review this dealer
+          </div>
         </div>
-      ))}
+      ) :(
+      reviews.map((review, index) => (
+        <div key={index} className='review_panel'>
+          <div className='review'>{review.review}</div>
+          <div className="reviewer">
+            {review.name} <span className="car-info">{review.car_make} {review.car_model} {review.car_year}</span>
+          </div>
+        </div>
+      ))
+      )}
     </div>  
+  </div>
   </div>
 )
 }

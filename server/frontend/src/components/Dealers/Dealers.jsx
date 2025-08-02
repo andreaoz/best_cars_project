@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import "./Dealers.css";
-import "../assets/style.css";
 import Header from '../Header/Header';
 import review_icon from "../assets/reviewicon.png"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 
 const Dealers = () => {
   const [dealersList, setDealersList] = useState([]);
@@ -49,7 +50,7 @@ const Dealers = () => {
 
 let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
 return(
-  <div>
+  <div className='dealerspage'>
       <Header/>
 
      <table className='table'>
@@ -83,7 +84,11 @@ return(
           <td>{dealer['zip']}</td>
           <td>{dealer['state']}</td>
           {isLoggedIn ? (
-            <td><a href={`/postreview/${dealer['id']}`}><img src={review_icon} className="review_icon" alt="Post Review"/></a></td>
+            <td>
+              <a href={`/postreview/${dealer['id']}`} className="review_icon">
+                <FontAwesomeIcon icon={faCommentDots} />
+              </a>
+            </td>
            ):<></>
           }
         </tr>

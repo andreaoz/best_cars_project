@@ -1,6 +1,5 @@
 import React from 'react';
-import "./Header.css";
-import "../assets/style.css";
+import './Header.css';
 import "../assets/bootstrap.min.css";
 
 const Header = () => {
@@ -32,37 +31,36 @@ let curr_user = sessionStorage.getItem('username')
 
 //If the user is logged in, show the username and logout option on home page
 if ( curr_user !== null &&  curr_user !== "") {
-    home_page_items = <div className="input_panel">
-      <text className='username'>{sessionStorage.getItem("username")}</text>
-    <a className="nav_item" href="/djangoapp/logout" onClick={logout}>Logout</a>
+    home_page_items = <div className="auth-buttons">
+      <text className='user-info'>{sessionStorage.getItem("username")}</text>
+    <a className="btn-auth btn-login" href="/djangoapp/logout" onClick={logout}>Logout</a>
   </div>
 }
     return (
         <div>
-          <nav class="header">
-        <div class="nav-container">
-            <a href="/" class="logo">
-                <i class="fas fa-flag-checkered"></i>
+          <nav className="header">
+        <div className="nav-container">
+            <a href="/" className="logo">
+                <i className="fas fa-flag-checkered"></i>
                 Best Cars Dealerships
             </a>
             
             <nav>
-                <ul class="nav-menu">
-                    <li><a href="/" class="nav-link">Home</a></li>
-                    <li><a href="/about" class="nav-link">About Us</a></li>
-                    <li><a href="/contact" class="nav-link">Contact Us</a></li>
+                <ul className="nav-menu">
+                    <li><a href="/" className="nav-link">Home</a></li>
+                    <li><a href="/about" className="nav-link">About Us</a></li>
+                    <li><a href="/contact" className="nav-link">Contact Us</a></li>
                 </ul>
             </nav>
-
-          <span class="navbar-text">
-                  <div class="loginlink" id="loginlogout">
-                  {home_page_items}
-                  </div>
-          </span>
+                
+            <div  className='auth-buttons' id="loginlogout">
+              {home_page_items}
+            </div>
+                  
         </div>
     </nav>
         </div>
     )
 }
 
-export default Header
+export default Header;
