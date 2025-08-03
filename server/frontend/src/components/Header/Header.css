@@ -1,10 +1,4 @@
 
-    * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-      
       /* Header moderno */
         .header {
             background: rgba(20, 20, 20, 0.9);
@@ -15,6 +9,9 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 8px 32px 0 rgba(220, 20, 60, 0.2);
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 0;
         }
 
         .nav-container {

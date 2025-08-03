@@ -50,9 +50,11 @@ const Dealers = () => {
 
 let isLoggedIn = sessionStorage.getItem("username") != null ? true : false;
 return(
-  <div className='dealerspage'>
+  <div className='homepage'>
       <Header/>
+     <div className='dealerspage'>
 
+     
      <table className='table'>
       <tr>
       <th>ID</th>
@@ -94,6 +96,7 @@ return(
         </tr>
       ))}
      </table>;
+       </div>
   </div>
 )
 }

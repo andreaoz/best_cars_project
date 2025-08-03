@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./Dealers.css";
-import "../assets/style.css";
 import Header from '../Header/Header';
 
 
@@ -91,33 +90,43 @@ const PostReview = () => {
 
 
   return (
-    <div>
+    <div className='homepage'>
       <Header/>
-      <div  style={{margin:"5%"}}>
-      <h1 style={{color:"darkblue"}}>{dealer.full_name}</h1>
-      <textarea id='review' cols='50' rows='7' onChange={(e) => setReview(e.target.value)}></textarea>
+      <div  className='review-form-container'>
+      <div class="review-form-panel">
+      <h1 className='dealer-title'>{dealer.full_name}</h1>
+
+      <textarea id='review' className='review-textarea' onChange={(e) => setReview(e.target.value)}
+        placeholder="Share your experience with this dealer... Tell us about the service, quality, and overall experience."
+      >
+      </textarea>
+
       <div className='input_field'>
-      Purchase Date <input type="date" onChange={(e) => setDate(e.target.value)}/>
+        <label for="purchase-date">Purchase Date</label>
+        <input type="date" onChange={(e) => setDate(e.target.value)}/>
       </div>
+      <br />
       <div className='input_field'>
-      Car Make 
+      <label for="car-select">Car Make & Model</label>
       <select name="cars" id="cars" onChange={(e) => setModel(e.target.value)}>
       <option value="" selected disabled hidden>Choose Car Make and Model</option>
-      {carmodels.map(carmodel => (
-          <option value={carmodel.CarMake+" "+carmodel.CarModel}>{carmodel.CarMake} {carmodel.CarModel}</option>
-      ))}
+        {carmodels.map(carmodel => (
+            <option value={carmodel.CarMake+" "+carmodel.CarModel}>{carmodel.CarMake} {carmodel.CarModel}</option>
+        ))}
       </select>        
       </div >
-
+      <br />
       <div className='input_field'>
-      Car Year <input type="int" onChange={(e) => setYear(e.target.value)} max={2023} min={2015}/>
+        <label for="car-year">Car Year</label>
+        <input type="int" onChange={(e) => setYear(e.target.value)} max={2025} min={2015}/>
       </div>
-
+      <br />
       <div>
       <button className='postreview' onClick={postreview}>Post Review</button>
+      </div>
       </div>
     </div>
     </div>
   )
 }
-export default PostReview
+export default PostReview;

@@ -1,11 +1,9 @@
 import React, { useState,useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./Dealers.css";
-import review_icon from "../assets/reviewbutton.png"
 import Header from '../Header/Header';
 
 const Dealer = () => {
-
 
   const [dealer, setDealer] = useState({});
   const [reviews, setReviews] = useState([]);
@@ -47,17 +45,15 @@ const Dealer = () => {
     }
   }
 
-  //const senti_icon = (sentiment)=>{
-  //  let icon = sentiment === "positive"?positive_icon:sentiment==="negative"?negative_icon:neutral_icon;
-  //  return icon;
-  //}
-
   useEffect(() => {
     get_dealer();
     get_reviews();
     if(sessionStorage.getItem("username")) {
-      setPostReview(<a href={post_review}><img src={review_icon} style={{width:'10%',marginLeft:'10px',marginTop:'10px'}} alt='Post Review'/></a>)
 
+      setPostReview(
+        <a href={post_review} className="post-review-link">
+             Write a review
+        </a>)
       
     }
   },[]);  
@@ -65,8 +61,9 @@ const Dealer = () => {
 
 return(
   
-  <div className='dealerspage'>
+  <div className='homepage'>
     <Header/>
+  <div className='dealerspage'>
   <div className='dealer-container'>
       <div className='dealer-info'>
       <h1 className='dealer-name'>{dealer.full_name}{postReview}</h1>
@@ -74,10 +71,6 @@ return(
       </div>
 
     <div className="stats-bar">
-      <div className="stat-item">
-        <i className="fas fa-map-marker-alt"></i>
-        <span>Prime Location</span>
-      </div>
       <div className="stat-item">
         <i className="fas fa-star"></i>
         <span>{reviews.length} Reviews</span>
@@ -114,7 +107,8 @@ return(
     </div>  
   </div>
   </div>
+  </div>
 )
 }
 
-export default Dealer
+export default Dealer;

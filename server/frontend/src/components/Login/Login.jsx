@@ -41,9 +41,9 @@ const Login = ({ onClose }) => {
   
 
   return (
-    <div>
+    <div className='homepage'>
       <Header/>
-    <div onClick={onClose}>
+    <div className='login-page-container' onClick={onClose}>
       <div
         onClick={(e) => {
           e.stopPropagation();
@@ -51,18 +51,27 @@ const Login = ({ onClose }) => {
         className='modalContainer'
       >
           <form className="login_panel" style={{}} onSubmit={login}>
-              <div>
-              <span className="input_field">Username </span>
-              <input type="text"  name="username" placeholder="Username" className="input_field" onChange={(e) => setUserName(e.target.value)}/>
+            <h2 class="login-title">Welcome Back</h2>
+              
+              <div className='input-group'>
+              <div className="input_field_label">Username </div>
+              <input type="text"  name="username" placeholder="Enter your username" className="input_field" onChange={(e) => setUserName(e.target.value)}/>
               </div>
-              <div>
-              <span className="input_field">Password </span>
-              <input name="psw" type="password"  placeholder="Password" className="input_field" onChange={(e) => setPassword(e.target.value)}/>            
+
+              <div className='input-group'>
+              <div className="input_field_label">Password </div>
+              <input name="psw" type="password"  placeholder="Enter your password" className="input_field" onChange={(e) => setPassword(e.target.value)}/>            
               </div>
-              <div>
+
+              <div className='button-group'>
               <input className="action_button" type="submit" value="Login"/>
               <input className="action_button" type="button" value="Cancel" onClick={()=>setOpen(false)}/>
               </div>
+
+              <div class="divider">
+                  <span>or</span>
+              </div>
+
               <a className="loginlink" href="/register">Register Now</a>
           </form>
       </div>
