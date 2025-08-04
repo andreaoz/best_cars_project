@@ -9,7 +9,7 @@ This project was developed individually as the final project for the **IBM Full 
 
 ![Homepage Screenshot](server/frontend/public/best-cars.png)
 
-![Watch the demo](Link to video)
+[Watch the demo](https://drive.google.com/file/d/1r2Lr75awTAcWWvmADS-sZLUyjjPhluy2/view?usp=sharing)
 
 ## Technologies Used
 
