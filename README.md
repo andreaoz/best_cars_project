@@ -73,4 +73,5 @@ cd frontend
 npm start
 
 
-This project is for educational purposes.
+
+*This project is for educational purposes.*
