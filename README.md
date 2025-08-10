@@ -5,7 +5,7 @@ A full-stack web application to browse and publish reviews of car dealerships in
 
 This project was developed individually as the final project for the **IBM Full Stack Software Developer Professional Certificate**.
 
-## Demo & Media
+## Demo
 
 ![Homepage Screenshot](server/frontend/public/best-cars.png)
 
