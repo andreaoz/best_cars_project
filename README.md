@@ -58,10 +58,7 @@ docker-compose up
 1. Navigate to the Django server folder in a new terminal:
 cd server
 
-2. Activate the virtual environment:
-source virtualenv/Scripts/activate
-
-3. Start the Django development server:
+2. Start the Django development server:
 python manage.py runserver
 
 ### React Frontend Setup
