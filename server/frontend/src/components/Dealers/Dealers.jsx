@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./Dealers.css";
 import Header from '../Header/Header';
-import review_icon from "../assets/reviewicon.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 

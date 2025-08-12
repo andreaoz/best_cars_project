@@ -48,8 +48,8 @@ if ( curr_user !== null &&  curr_user !== "") {
             <nav>
                 <ul className="nav-menu">
                     <li><a href="/" className="nav-link">Home</a></li>
-                    <li><a href="/about" className="nav-link">About Us</a></li>
-                    <li><a href="/contact" className="nav-link">Contact Us</a></li>
+                    <li><a href="/under-construction" className="nav-link">About Us</a></li>
+                    <li><a href="/under-construction" className="nav-link">Contact Us</a></li>
                 </ul>
             </nav>
                 

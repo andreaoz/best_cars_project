@@ -57,8 +57,8 @@ const Home = () => {
                     <nav>
                         <ul className="nav-menu">
                             <li><Link to="/" className="nav-link">Home</Link></li>
-                            <li><Link to="/about" className="nav-link">About Us</Link></li>
-                            <li><Link to="/contact" className="nav-link">Contact Us</Link></li>
+                            <li><Link to="/under-construction" className="nav-link">About Us</Link></li>
+                            <li><Link to="/under-construction" className="nav-link">Contact Us</Link></li>
                         </ul>
                     </nav>
                     <div className="auth-buttons" id="loginlogout">
